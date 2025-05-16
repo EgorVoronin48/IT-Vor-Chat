@@ -1,5 +1,8 @@
 import asyncio
+import sqlite3
 from aiogram import Bot, Dispatcher
+from aiogram.filters import Command
+from aiogram.types import Message
 
 bot = Bot("7021048853:AAH8kf3kH141FiXnn04snayk-aTbBQXutWo")
 dp = Dispatcher()
@@ -39,6 +42,15 @@ async def start_handler(message: Message):
         await message.answer(f"Привет, {message.from_user.first_name}! 👋")
     except Exception as e:
         print(f"Error in start_handler: {e}")
+
+
+@dp.message(lambda message: message.text == "Составить тест")
+async def create_test_handler(message: Message):
+    await message.answer("Функция в разработке")
+
+@dp.message(lambda message: message.text == "Пройти тест")
+async def take_test_handler(message: Message):
+    await message.answer("Функция в разработке")        
 
 
 async def main():
